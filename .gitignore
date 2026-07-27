@@ -1,0 +1,16 @@
+# Docker
+postgres_data/
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
