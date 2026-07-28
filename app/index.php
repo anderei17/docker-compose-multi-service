@@ -1,14 +1,15 @@
 <?php
 
-$host = "postgres-db";
-$dbname = "devopsdb";
-$user = "andre";
-$password = "password";
+$host = getenv('DB_HOST');
+$port = getenv('DB_PORT');
+$dbname = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
 
 try {
 
     $pdo = new PDO(
-        "pgsql:host=$host;port=5432;dbname=$dbname",
+        "pgsql:host=$host;port=$port;dbname=$dbname",
         $user,
         $password
     );
