@@ -1,0 +1,36 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches:
+      - main
+      - feature/v1.2
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Compose services
+        run: docker compose build
+
+      - name: Start application
+        run: docker compose up -d
+
+      - name: Wait for PostgreSQL
+        run: sleep 15
+
+      - name: Test application
+        run: |
+          curl --fail http://localhost:8080
+
+      - name: Stop services
+        if: always()
+        run: docker compose down
