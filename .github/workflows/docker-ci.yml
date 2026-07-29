@@ -10,6 +10,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-test:
     runs-on: ubuntu-latest
@@ -41,8 +45,23 @@ jobs:
           exit 1
 
       - name: Test application
-        run: |
-          curl --fail http://localhost:8080
+        run: curl --fail http://localhost:8080
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push PHP Image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./app
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/docker-compose-multi-service-php:latest
+            ghcr.io/${{ github.repository_owner }}/docker-compose-multi-service-php:${{ github.sha }}
 
       - name: Show Docker logs if failed
         if: failure()
