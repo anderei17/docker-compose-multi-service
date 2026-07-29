@@ -1,6 +1,12 @@
+# Docker Compose Multi-Service
+
+![Docker Compose CI](https://github.com/anderei17/docker-compose-multi-service/actions/workflows/docker-ci.yml/badge.svg)
+
+
 # Docker Compose Multi-Service Application
 
 A simple multi-container web application built with Docker Compose. This project demonstrates how multiple services can work together using containerization.
+
 
 ## 🚀 Technologies
 
