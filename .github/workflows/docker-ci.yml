@@ -18,18 +18,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create .env
+        run: cp .env.example .env
+
       - name: Build Docker Compose services
         run: docker compose build
 
       - name: Start application
         run: docker compose up -d
 
-      - name: Wait for PostgreSQL
+      - name: Wait for application
         run: sleep 15
 
       - name: Test application
-        run: |
-          curl --fail http://localhost:8080
+        run: curl --fail http://localhost:8080
 
       - name: Stop services
         if: always()
