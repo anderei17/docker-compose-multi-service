@@ -1,5 +1,5 @@
 # 🚀 Docker Compose Multi-Service Application
-
+[![Docker Compose CI](https://github.com/anderei17/docker-compose-multi-service/actions/workflows/docker-ci.yml/badge.svg)](https://github.com/anderei17/docker-compose-multi-service/actions/workflows/docker-ci.yml)
 ![Docker](https://img.shields.io/badge/Docker-29-blue?logo=docker)
 ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-Multi--Service-2496ED?logo=docker)
 ![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?logo=php)
